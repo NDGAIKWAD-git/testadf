@@ -1,0 +1,9 @@
+{
+	"name": "ncvdadf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "dc586edd-0cb1-4304-bc42-eed593111bbb",
+		"tenantId": "70ef87da-a8d7-4035-95be-f5878aaef040"
+	}
+}

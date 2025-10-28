@@ -1,0 +1,28 @@
+{
+	"name": "pl_process_population_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Execute Population Transformation",
+				"type": "DatabricksNotebook",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:20:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			}
+		],
+		"folder": {
+			"name": "process"
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-10-28T05:53:50Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
