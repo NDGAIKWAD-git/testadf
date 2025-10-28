@@ -1,0 +1,188 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ncvdadf"
+		},
+		"ls_ablob_cvdrptsa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_ablob_cvdrptsa'"
+		},
+		"ls_adls_cvdrptdl_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_cvdrptdl'"
+		},
+		"ls_hdi_cvd_cluster_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ls_hdi_cvd_cluster'"
+		},
+		"ls_hdi_cvd_cluster_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'ls_hdi_cvd_cluster'"
+		},
+		"ls_hdi_cvd_cluster_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'ls_hdi_cvd_cluster'"
+		},
+		"ls_sql_cvddb_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_sql_cvddb'"
+		},
+		"ls_adls_cvdrptdl_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://cvdls.dfs.core.windows.net/"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "cf0545a6-b74a-4140-8e08-4f64b0af2323"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "nilrg"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "70ef87da-a8d7-4035-95be-f5878aaef040"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "38b0034f-0294-4812-a09e-11222cdb4f74"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterUserName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterSshUserName": {
+			"type": "string",
+			"defaultValue": "admin"
+		},
+		"ls_http_opendata_ecdc_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().baseURL}"
+		},
+		"ls_sql_cvddb_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "cvddbsrv.database.windows.net"
+		},
+		"ls_sql_cvddb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "cvddb"
+		},
+		"ls_sql_cvddb_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "nilsqladm"
+		},
+		"tr_population_data_arrived_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/cf0545a6-b74a-4140-8e08-4f64b0af2323/resourceGroups/nilrg/providers/Microsoft.Storage/storageAccounts/cvdsa"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ncvdadf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_ablob_cvdrptsa_connectionString": {
+						"value": "[parameters('ls_ablob_cvdrptsa_connectionString')]"
+					},
+					"ls_adls_cvdrptdl_accountKey": {
+						"value": "[parameters('ls_adls_cvdrptdl_accountKey')]"
+					},
+					"ls_sql_cvddb_password": {
+						"value": "[parameters('ls_sql_cvddb_password')]"
+					},
+					"ls_adls_cvdrptdl_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_cvdrptdl_properties_typeProperties_url')]"
+					},
+					"ls_http_opendata_ecdc_properties_typeProperties_url": {
+						"value": "[parameters('ls_http_opendata_ecdc_properties_typeProperties_url')]"
+					},
+					"ls_sql_cvddb_properties_typeProperties_server": {
+						"value": "[parameters('ls_sql_cvddb_properties_typeProperties_server')]"
+					},
+					"ls_sql_cvddb_properties_typeProperties_database": {
+						"value": "[parameters('ls_sql_cvddb_properties_typeProperties_database')]"
+					},
+					"ls_sql_cvddb_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sql_cvddb_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ncvdadf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_hdi_cvd_cluster_servicePrincipalKey": {
+						"value": "[parameters('ls_hdi_cvd_cluster_servicePrincipalKey')]"
+					},
+					"ls_hdi_cvd_cluster_clusterPassword": {
+						"value": "[parameters('ls_hdi_cvd_cluster_clusterPassword')]"
+					},
+					"ls_hdi_cvd_cluster_clusterSshPassword": {
+						"value": "[parameters('ls_hdi_cvd_cluster_clusterSshPassword')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_tenant')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_clusterUserName": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_clusterUserName')]"
+					},
+					"ls_hdi_cvd_cluster_properties_typeProperties_clusterSshUserName": {
+						"value": "[parameters('ls_hdi_cvd_cluster_properties_typeProperties_clusterSshUserName')]"
+					},
+					"tr_population_data_arrived_properties_typeProperties_scope": {
+						"value": "[parameters('tr_population_data_arrived_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ncvdadf_ArmTemplate_0')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ncvdadf"
+		},
+		"ls_ablob_cvdrptsa_connectionString": {
+			"value": ""
+		},
+		"ls_adls_cvdrptdl_accountKey": {
+			"value": ""
+		},
+		"ls_hdi_cvd_cluster_servicePrincipalKey": {
+			"value": ""
+		},
+		"ls_hdi_cvd_cluster_clusterPassword": {
+			"value": ""
+		},
+		"ls_hdi_cvd_cluster_clusterSshPassword": {
+			"value": ""
+		},
+		"ls_sql_cvddb_password": {
+			"value": ""
+		},
+		"ls_adls_cvdrptdl_properties_typeProperties_url": {
+			"value": "https://cvdls.dfs.core.windows.net/"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_hostSubscriptionId": {
+			"value": "cf0545a6-b74a-4140-8e08-4f64b0af2323"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterResourceGroup": {
+			"value": "nilrg"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_tenant": {
+			"value": "70ef87da-a8d7-4035-95be-f5878aaef040"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_servicePrincipalId": {
+			"value": "38b0034f-0294-4812-a09e-11222cdb4f74"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterUserName": {
+			"value": "admin"
+		},
+		"ls_hdi_cvd_cluster_properties_typeProperties_clusterSshUserName": {
+			"value": "admin"
+		},
+		"ls_http_opendata_ecdc_properties_typeProperties_url": {
+			"value": "@{linkedService().baseURL}"
+		},
+		"ls_sql_cvddb_properties_typeProperties_server": {
+			"value": "cvddbsrv.database.windows.net"
+		},
+		"ls_sql_cvddb_properties_typeProperties_database": {
+			"value": "cvddb"
+		},
+		"ls_sql_cvddb_properties_typeProperties_userName": {
+			"value": "nilsqladm"
+		},
+		"tr_population_data_arrived_properties_typeProperties_scope": {
+			"value": "/subscriptions/cf0545a6-b74a-4140-8e08-4f64b0af2323/resourceGroups/nilrg/providers/Microsoft.Storage/storageAccounts/cvdsa"
+		}
+	}
+}
